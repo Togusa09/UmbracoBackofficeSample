@@ -1,0 +1,62 @@
+﻿<div class="umb-panel umb-editor-wrapper" ng-controller="CustomSection.ListCustomItemController as vm">
+    <form name="mySectionForm" novalidate ng-submit="vm.search()">
+        <umb-editor-view>
+            <umb-editor-header name="vm.pageName"
+                               hide-alias="true"
+                               hide-description="true"
+                               hide-icon="true"
+                               name-locked="true">
+            </umb-editor-header>
+
+            <umb-editor-container>
+                <div class="form-horizontal">
+                    <umbraco-property title="Search Criteria">
+                        <input type="text" ng-model="vm.searchCriteria.searchProperty" />
+                    </umbraco-property>
+                    <button type="submit" class="btn">Search</button>
+                    <button type="button" class="btn" ng-click="vm.exportCSV()">Export CSV</button>
+                    <button type="button" class="btn" ng-click="vm.clear()">Clear</button>
+                    <record-count total-items="vm.totalItems" page-number="vm.page" page-count="vm.pageCount"></record-count>
+
+                    <umb-load-indicator ng-if="vm.loading">
+                    </umb-load-indicator>
+                    <div ng-if="!vm.loading">
+                        <table class="table table-striped" cellspacing="0" cellpadding="5px">
+                            <thead>
+                                <tr>
+                                    <th class="firstCol"><a ng-click="vm.sortBy('id')">ID</a></th>
+                                    <th class="big-col"><a ng-click="vm.sortBy('name')">Name</a></th>
+                                    <th class="big-col"><a ng-click="vm.sortBy('email')">Email</a></th>
+                                    <th class="small-col"><a ng-click="vm.sortBy('date')">Date Added</a></th>
+                                    <th class="small-col"><a ng-click="vm.sortBy('sapActive')">SAP Active</a>*</th>
+                                    <th class="small-col"><a ng-click="vm.sortBy('loginActive')">Login Active</a>*</th>
+                                    <th class="small-col"><a ng-click="vm.sortBy('password')">Has Password</a></th>
+                                    <th class="small-col">Edit</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr ng-repeat="searchResult in vm.searchResults">
+                                    <td class="firstCol">{{searchResult.RepId}}</td>
+
+                                    <td>{{searchResult.Name}}</td>
+                                    <td>{{searchResult.Email}}</td>
+                                    <td>{{searchResult.DateFirstImportedUTC | date : 'short'}}</td>
+                                    <td><a ng-href="#/CustomSection/CustomSectionTree/EditCustomItem/{{searchResult.Id}}">Edit</a></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <umb-pagination ng-if="vm.pageCount"
+                                        page-number="vm.currentPage"
+                                        total-pages="vm.pageCount"
+                                        on-go-to-page="vm.goToPage"
+                                        on-next="vm.next"
+                                        on-prev="vm.prev">
+                        </umb-pagination>
+
+                    </div>
+                </div>
+            </umb-editor-container>
+        </umb-editor-view>
+    </form>
+</div>
+

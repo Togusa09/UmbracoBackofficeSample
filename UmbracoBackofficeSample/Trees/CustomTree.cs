@@ -19,7 +19,7 @@ namespace UmbracoBackofficeSample.Trees
             var nodes = new TreeNodeCollection();
 
             // Create a new node in the menu tree, that will open the specified url
-            var item = this.CreateTreeNode("1a", id, queryStrings, "Find Custom Item", "developerMacro.gif", false, "CustomSection/CustomSectionTree/FindItem/0");
+            var item = this.CreateTreeNode("1a", id, queryStrings, "Find Custom Item", "developerMacro.gif", false, "CustomSection/CustomSectionTree/ListCustomItem/0");
             nodes.Add(item);
 
             return nodes;

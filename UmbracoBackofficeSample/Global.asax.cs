@@ -16,7 +16,7 @@ using Umbraco.Core;
 using Umbraco.Web;
 
 
-namespace UmbracoBackofficeSample2
+namespace UmbracoBackofficeSample
 {
     public class Global : UmbracoApplication, IContainerProviderAccessor
     {

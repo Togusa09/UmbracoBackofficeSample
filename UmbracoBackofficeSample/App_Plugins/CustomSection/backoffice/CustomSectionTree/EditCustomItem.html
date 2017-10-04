@@ -1,0 +1,41 @@
+﻿<div class="custom-editor" ng-controller="CustomSection.EditCustomItemController as vm">
+    <form name="editForm" val-form-manager novalidate>
+        <umb-editor-view>
+            <umb-editor-header name="vm.pageName"
+                               hide-alias="true"
+                               hide-description="true"
+                               hide-icon="true"
+                               name-locked="true">
+            </umb-editor-header>
+            <umb-editor-container>
+                <div class="form-horizontal">
+                    <umb-load-indicator ng-if="vm.loading">
+                    </umb-load-indicator>
+                    <div ng-if="!vm.loading">
+                        <div class="well">
+                            <p>Sample editing page</p>
+                        </div>
+
+                        <div class="form-horizontal">
+                            <umbraco-property title="Item Id">
+                                {{vm.salesRep.Id}}
+                            </umbraco-property>
+                            <umbraco-property title="Name">
+                                {{vm.salesRep.Name}}
+                            </umbraco-property>
+                        </div>
+                    </div>
+                </div>
+            </umb-editor-container>
+            <umb-editor-footer>
+                <umb-editor-footer-content-left>
+                    <a href="#/CustomSection/CustomSectionTree/ListCustomItem/0">Back to search</a>
+                </umb-editor-footer-content-left>
+                <umb-editor-footer-content-right>
+                    <button type="button" class="btn btn-success" ng-disabled="!editForm.$valid || vm.loading" ng-click="vm.save(editForm)" hotkey="ctrl+s">Save</button>
+                </umb-editor-footer-content-right>
+            </umb-editor-footer>
+        </umb-editor-view>
+    </form>
+</div>
+

@@ -1,0 +1,9 @@
+﻿{
+    //array of files we want to inject into the application on app_start
+  javascript: [
+    "~/App_Plugins/CustomSection/backoffice/CustomSectionTree/Resources/customItem.Resource.js",
+    "~/App_Plugins/CustomSection/backoffice/CustomSectionTree/Services/fileDownload.Service.js",
+    "~/App_Plugins/CustomSection/backoffice/CustomSectionTree/Controllers/EditCustomItem.Controller.js",
+    "~/App_Plugins/CustomSection/backoffice/CustomSectionTree/Controllers/ListCustomItem.Controller.js"
+  ]
+}

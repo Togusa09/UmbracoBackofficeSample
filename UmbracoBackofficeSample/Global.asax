@@ -1,2 +1,2 @@
-﻿<%@ Application Inherits="UmbracoBackofficeSample2.Global" Language="C#" %>
+﻿<%@ Application Inherits="UmbracoBackofficeSample.Global" Language="C#" %>
           
