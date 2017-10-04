@@ -2,22 +2,22 @@
     function ($q, $http, umbRequestHelper) {
         //the factory object returned
         return {
-            getCustomItems: function () {
+            getCustomItems: function (request) {
                 return umbRequestHelper.resourcePromise(
-                    $http.get("backoffice/api/CustomItem/GetItems"),
+                    $http.get("backoffice/api/CustomItem/GetCustomItems",
+                        {
+                            params: request
+                        }),
                     "Failed to retrieve Items");
-            },
-            getCustomItemsCsv: function () {
-                return $http.get("backoffice/api/CustomItem/GetItemsCsv");
             },
             getCustomItem: function (id) {
                 return umbRequestHelper.resourcePromise(
-                    $http.get("backoffice/api/CustomItem/GetItem/" + id),
+                    $http.get("backoffice/api/CustomItem/GetCustomItem/" + id),
                     "Failed to retrieve CustomItem");
             },
             updateCustomItem: function (id, updatedCustomItem) {
                 return umbRequestHelper.resourcePromise(
-                    $http.get("backoffice/api/Brand/CustomItem/" + id, updatedCustomItem),
+                    $http.get("backoffice/api/Brand/UpdateCustomItem/" + id, updatedCustomItem),
                     "Failed to update CustomItem");
             },
         }

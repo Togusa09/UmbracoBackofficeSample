@@ -1,5 +1,5 @@
 ﻿angular.module("umbraco")
-    .controller("CustomSection.EditCustomitemController", function ($scope, $routeParams, customItemResource) {
+    .controller("CustomSection.EditCustomItemController", function ($scope, $routeParams, customItemResource) {
         var self = this;
         self.customItem = {};
         self.pageName = "Edit Custom Item";

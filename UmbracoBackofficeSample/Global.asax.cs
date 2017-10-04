@@ -14,6 +14,7 @@ using Serilog.Events;
 using SerilogWeb.Classic.Enrichers;
 using Umbraco.Core;
 using Umbraco.Web;
+using UmbracoBackofficeSample.Services;
 
 
 namespace UmbracoBackofficeSample
@@ -76,7 +77,7 @@ namespace UmbracoBackofficeSample
 
             builder.RegisterInstance(log).As<ILogger>();
             builder.Register(c => new HttpContextWrapper(HttpContext.Current)).As<HttpContextBase>();
-            //builder.RegisterType<PagingService>().As<IPagingService>();
+            builder.RegisterType<PagingService>().As<IPagingService>();
             //builder.RegisterType<WebApiCsvGenerator>().As<IWebApiCsvGenerator>();
 
             var container = builder.Build();

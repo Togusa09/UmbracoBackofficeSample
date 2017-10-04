@@ -48,9 +48,16 @@
 
         self.search = function () {
             self.loading = true;
+
+            var criteria = angular.extend(self.searchCriteria,
+                {
+                    sortByProperty: self.sortByProperty,
+                    sortDirection: self.sortDirection,
+                    currentPage: self.currentPage
+                });
             umbSessionStorage.set('customItemSearchCriteria', self.searchCriteria);
 
-            return customItemResource.getCustomItems(self.searchCriteria.searchProperty)
+            return customItemResource.getCustomItems(criteria)
                 .then(function (response) {
                     self.searchResults = response.List;
                     self.currentPage = response.PageNumber;
@@ -66,17 +73,6 @@
             self.searchCriteria = self.getDefaulSearchCriteria();
             umbSessionStorage.set('customItemSearchCriteria', self.searchCriteria);
         };
-
-        self.exportCSV = function () {
-            self.loading = true;
-            var a = document.createElement("a");
-            document.body.appendChild(a);
-            salesRepResource.getCustomItemsAsCsv(self.searchCriteria.searchProperty)
-                .then(function (response) {
-                    self.loading = false;
-                    fileDownloadService.createDownloadLinkFromHttpResponse(response, a, response.data);
-                });
-        }
 
         self.search();
     });
