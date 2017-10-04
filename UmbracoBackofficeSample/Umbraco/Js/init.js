@@ -26,35 +26,10 @@ app.run(['userService', '$log', '$rootScope', '$location', 'navigationService', 
         /** execute code on each successful route */
         $rootScope.$on('$routeChangeSuccess', function(event, current, previous) {
 
-            var deployConfig = Umbraco.Sys.ServerVariables.deploy;
-            var deployEnv, deployEnvTitle;
-            if (deployConfig) {
-                deployEnv = Umbraco.Sys.ServerVariables.deploy.CurrentWorkspace;
-                deployEnvTitle = "(" + deployEnv + ") ";
-            }
-
-            if(current.params.section) {
-
-                //Uppercase the current section, content, media, settings, developer, forms
-                var currentSection = current.params.section.charAt(0).toUpperCase() + current.params.section.slice(1);
-
-                var baseTitle = currentSection + " - " + $location.$$host;
-
-                //Check deploy for Global Umbraco.Sys obj workspace
-                if(deployEnv){
-                    $rootScope.locationTitle = deployEnvTitle + baseTitle;
-                }
-                else {
-                    $rootScope.locationTitle = baseTitle;
-                }
-                
+            if(current.params.section){
+                $rootScope.locationTitle = current.params.section + " - " + $location.$$host;
             }
             else {
-
-                if(deployEnv) {
-                     $rootScope.locationTitle = deployEnvTitle + "Umbraco - " + $location.$$host;
-                }
-
                 $rootScope.locationTitle = "Umbraco - " + $location.$$host;
             }
 

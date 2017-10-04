@@ -1,10 +1,11 @@
 <div ng-controller="Umbraco.Overlays.ItemPickerOverlay">
 
-    <div class="form-search" ng-hide="model.filter === false" style="margin-bottom: 15px;">
+    <div class="form-search" ng-hide="model.filter === false">
       <i class="icon-search"></i>
       <input type="text"
+        style="width: 100%"
         ng-model="searchTerm"
-        class="umb-search-field search-query input-block-level -full-width-input"
+        class="umb-search-field search-query input-block-level"
         localize="placeholder"
         placeholder="@placeholders_filter"
         umb-auto-focus />

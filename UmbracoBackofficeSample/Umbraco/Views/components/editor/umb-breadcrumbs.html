@@ -1,15 +1,10 @@
 <ul class="umb-breadcrumbs">
-    <li class="umb-breadcrumbs__ancestor" ng-repeat="ancestor in ancestors">
-        
-        <!-- go to node on click -->
-        <a ng-if="!$last && !allowOnOpen" href="#/{{entityType}}/{{entityType}}/edit/{{ancestor.id}}" class="umb-breadcrumbs__ancestor-link" title="{{ancestor.name}}">{{ancestor.name}}</a>
+   <li class="umb-breadcrumbs__ancestor" ng-repeat="ancestor in ancestors">
 
-        <!-- use callback to handle click -->
-        <a ng-if="!$last && allowOnOpen" href="#" ng-click="open(ancestor)" class="umb-breadcrumbs__ancestor-link" title="{{ancestor.name}}" prevent-default>{{ancestor.name}}</a>
+      <a ng-if="!$last" href="#/{{entityType}}/{{entityType}}/edit/{{ancestor.id}}" class="umb-breadcrumbs__ancestor-link" title="{{ancestor.name}}">{{ancestor.name}}</a>
+      <span ng-if="!$last" class="umb-breadcrumbs__seperator">&#47;</span>
 
-        <span ng-if="!$last" class="umb-breadcrumbs__seperator">&#47;</span>
+      <span class="umb-breadcrumbs__ancestor-text" ng-if="$last" title="{{ancestor.name}}">{{ancestor.name}}</span>
 
-        <span class="umb-breadcrumbs__ancestor-text" ng-if="$last" title="{{ancestor.name}}">{{ancestor.name}}</span>
-
-    </li>
+   </li>
 </ul>

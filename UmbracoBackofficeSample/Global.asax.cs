@@ -16,7 +16,7 @@ using Umbraco.Core;
 using Umbraco.Web;
 
 
-namespace UmbracoBackofficeSample
+namespace UmbracoBackofficeSample2
 {
     public class Global : UmbracoApplication, IContainerProviderAccessor
     {
@@ -83,7 +83,7 @@ namespace UmbracoBackofficeSample
             _containerProvider = new ContainerProvider(container);
             config.DependencyResolver = new AutofacWebApiDependencyResolver(container);
 
-            RouteConfig.RegisterRoutes(RouteTable.Routes);
+            //RouteConfig.RegisterRoutes(RouteTable.Routes);
             DependencyResolver.SetResolver(new AutofacDependencyResolver(_containerProvider.ApplicationContainer));
 
             AppDomain.CurrentDomain.UnhandledException += (s, args) =>
